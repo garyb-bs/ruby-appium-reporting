@@ -19,15 +19,12 @@ caps['name'] = 'single_test-3'
 #Set the platform name
 caps['platformName'] = 'android'
 
-username = 'garyb_bE4JkU'
-access_key = 'iCwxL8qokp6rochNnEvt'
-
 # Initialize the remote Webdriver using BrowserStack remote URL
 # and desired capabilities defined above
 appium_driver = Appium::Driver.new({
 	'caps' => caps,
 	'appium_lib' => {
-		:server_url => "http://#{username}:#{access_key}@hub-cloud.browserstack.com/wd/hub"
+		:server_url => "http://#{ENV["BROWSERSTACK_USERNAME"]}:#{ENV["BROWSERSTACK_ACCESS_KEY"]}@hub-cloud.browserstack.com/wd/hub"
 	}}, true)
 driver = appium_driver.start_driver
 
